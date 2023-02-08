@@ -1,8 +1,8 @@
                                                                      
-                                                                     #############################
-                                                                     ### Fake Karten Erkennung ###
-                                                                     ###         Tool          ###
-                                                                     #############################
+#############################
+### Fake Karten Erkennung ###
+###         Tool          ###
+#############################
 
 
 Note:
@@ -14,9 +14,9 @@ Note2:
 This is a high-level overview of the process, and implementing a complete solution for detecting fake Pokemon trading cards is a complex task that requires a good understanding of machine learning and computer vision. A more complete solution would also need to take into account factors such as variations between printing runs and different manufacturing processes.
 
 
-                                                                     ############################
-                                                                     ### ChatGPT instructions ###
-                                                                     ############################
+############################
+### ChatGPT instructions ###
+############################
 
 Here is a basic outline of how to detect fake Pokemon trading cards using Python:
 
