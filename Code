@@ -1,0 +1,62 @@
+import cv2
+import numpy as np
+
+# Step 1: Gather reference data
+# For the purposes of this example, we'll assume that we have a set of reference images of genuine cards stored in a directory
+
+# Step 2: Extract features from the reference images
+# For this example, we'll extract two features: the average color of the card, and the aspect ratio (height to width ratio)
+
+reference_features = []
+reference_labels = []
+
+for i in range(num_reference_images):
+    # Load the reference image
+    img = cv2.imread(f'reference_images/{i}.jpg')
+    
+    # Calculate average color
+    avg_color = np.mean(img, axis=(0,1))
+    
+    # Calculate aspect ratio
+    aspect_ratio = img.shape[0] / img.shape[1]
+    
+    # Add the features to the reference_features list
+    reference_features.append([avg_color, aspect_ratio])
+    
+    # Add a label indicating that this image is a genuine card
+    reference_labels.append(1)
+
+# Step 3: Extract features from an unknown card
+# For this example, we'll use a hardcoded image
+
+img = cv2.imread('unknown_card.jpg')
+
+# Calculate average color
+avg_color = np.mean(img, axis=(0,1))
+
+# Calculate aspect ratio
+aspect_ratio = img.shape[0] / img.shape[1]
+
+# Create a feature vector for the unknown card
+unknown_features = [avg_color, aspect_ratio]
+
+# Step 4: Compare the unknown card's features with the reference data
+# For this example, we'll use the Euclidean distance as a measure of similarity
+
+min_distance = float('inf')
+best_match_index = -1
+
+for i in range(num_reference_images):
+    distance = np.linalg.norm(unknown_features - reference_features[i])
+    
+    if distance < min_distance:
+        min_distance = distance
+        best_match_index = i
+
+# Step 5: Return the result
+
+if reference_labels[best_match_index] == 1:
+    print('The card is genuine')
+else:
+    print('The card is fake')
+
